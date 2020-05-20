@@ -1,0 +1,30 @@
+% This code computes illustrates the use of the function to the synthetic posterior probability density functions 
+% of calendar ages, in this case historic earthquakes and plots all
+% synthetic PDF's 
+% See MANUSCRIPT DOI PLACEHOLDER
+% Richard F. Ott, 2019
+clc
+clear
+close all
+
+% INPUT ----------------------------------------------------------------- %
+data = xlsread('Historic_events.xlsx',2);
+dR = 58;            % reservoir effect
+dR_err = 85;        % uncert. reservoir effect
+an_err = 30;        % analytical uncert.
+% ----------------------------------------------------------------------- %
+
+events = data(:,1);                % assign historic events in AD/BC
+events = abs(events - 1950);       % convert to BP
+
+[TotalPDF,PDFs] = SynthCal(events, dR, dR_err, an_err, 'double');
+
+
+figure()
+xh = calprob{1}(:,1);
+plot(xh,totalprob,'k-')
+xlim([1000,3000])
+ylabel('probability')
+xlabel('cal BP')
+
+% save('HistCalCurve.mat','totalprob','xh','calprob');

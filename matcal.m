@@ -424,20 +424,20 @@ if plotme == 1
 	%----- Plot ProbDistFunc
 	axpdf = axes;
 	axes(axpdf)
-	area(calprob(:,1),calprob(:,2),'edgecolor','none')
+	area(calprob(:,1),calprob(:,2),'edgecolor','none')  % plot calibrated posterior
 	axpdfylims = ylim;
 	axpdfxlims = xlim;
-	area(calprob(:,1),calprob(:,2)*0.2,'edgecolor',[0 0 0],'facecolor',[0.9 0.9 0.9])
+	area(calprob(:,1),calprob(:,2)*0.2,'edgecolor',[0 0 0],'facecolor',[0.9 0.9 0.9]) % plot posterior again, only modifies colo etc...
 	hold on
 	M = size(p95_4,1);
-	for i = 1:M
+	for i = 1:M  % this section plots the 2 sigma range in darker color onto the posterior
 		if strcmpi(yeartype,'Cal BP') == 1 || strcmpi(yeartype,'CalBP') == 1
 			area( calprob(calprob(:,1) <= p95_4(i,1) & calprob(:,1) >= p95_4(i,2),1)  , calprob(calprob(:,1) <= p95_4(i,1) & calprob(:,1) >= p95_4(i,2),2)*0.2,'edgecolor','none','facecolor',[0.56 0.56 0.66])
 		elseif strcmpi(yeartype,'BCE/CE') == 1
 			area( calprob(calprob(:,1) >= p95_4(i,1) & calprob(:,1) <= p95_4(i,2),1)  , calprob(calprob(:,1) >= p95_4(i,1) & calprob(:,1) <= p95_4(i,2),2)*0.2,'edgecolor','none','facecolor',[0.56 0.56 0.66])
 		end
 	end
-	M = size(p68_2,1);
+	M = size(p68_2,1);  % This plots a different color for the one sigma range
 	for i = 1:M
 		if strcmpi(yeartype,'Cal BP') == 1 || strcmpi(yeartype,'CalBP') == 1
 			area( calprob(calprob(:,1) <= p68_2(i,1) & calprob(:,1) >= p68_2(i,2),1)  , calprob(calprob(:,1) <= p68_2(i,1) & calprob(:,1) >= p68_2(i,2),2)*0.2,'edgecolor','none','facecolor',[0.5 0.5 0.6])

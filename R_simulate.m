@@ -1,11 +1,10 @@
 function [ varargout ] = R_simulate( date, datetype, curve )
 % Takes a calendar date and a 14C calibration curve and computes the mean 
-% radiocarbon age age expected for this date. 
+% radiocarbon age (and standard deviation) expected for this date. 
 % Input: date, datetype (BP, AD or BC), calibration curve (Marine13,
 % IntCal13...)
-
+% Output: [radiocarbon age, standard deviation (optional)
 % Richard Ott, 2018
-addpath('C:\Richard\PhD_ETH\matlab\MatCal\MatCal-master\CalibrationCurves');   % add link to calibration curve data
 
 if strcmp(datetype,'AD')           % convert to BP
     date = abs(date - 1950); 
