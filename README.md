@@ -1,4 +1,5 @@
-SynthCal is a function for the MatCal radiocarbon package.
+SynthCal and R_simulate are functions for the MatCal radiocarbon package.
+Please run the SytnhCalScript to replicate the synthetic data from figure 2, from Ott et, al. 2020
 Richard F. Ott, 2020
 
 # MatCal
